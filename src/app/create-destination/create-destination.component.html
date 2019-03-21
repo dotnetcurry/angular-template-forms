@@ -1,0 +1,55 @@
+
+  <form style="margin-left:20px; margin-top:20px" (change)="onChange()" #destinationForm="ngForm" >
+
+    <!-- #destinationForm="ngForm"  -->
+
+    <div class="form-group">
+        <label for="cityName">
+            <strong>Destination</strong>
+            <input class="form-control" type="text" name="cityName" id="cityName" required [(ngModel)]="destinationModel.name" #cityName="ngModel"/>
+          </label>
+          <div [hidden]="cityName.valid">
+            <strong style="color: #a94442; font-size: 9pt" > Please enter a city name. </strong>
+           
+          </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="country">
+          <strong>Country</strong>
+          <input class="form-control" type="text" id="country" name="country" required minlength="4" maxlength="20" [(ngModel)]="destinationModel.country" #country="ngModel" />
+        </label>
+        <strong>{{country.errors}}</strong>
+        <!-- <div *ngIf="country.errors && country.errors.minlength">
+            <strong style="color: #a94442; font-size: 9pt" > Country name should at least have four characters </strong>   
+        </div>
+        <div *ngIf="country.errors && country.errors.maxlength">
+            <strong style="color: #a94442; font-size: 9pt" > No country name has so many characters </strong>   
+        </div> -->
+    </div>
+
+    <div>
+      <label for="timezone">
+        <strong> Timezone  </strong>
+        <input type="text" class="form-control" id="timezone" name="timezone" required [(ngModel)]="destinationModel.timezone" />
+      </label>
+    </div>
+
+    <div>
+        <label for="distFrmCapital">
+          <strong> Distance from capital  </strong>
+          <input type="text" class="form-control" id="distFrmCapital" name="distFrmCapital" [(ngModel)]="destinationModel.distanceFromCapital" />
+        </label>
+    </div>
+
+    <div>
+        <label for="language">
+          <strong> Local Language  </strong>
+          <input type="text" class="form-control" id="language" name="language" [(ngModel)]="destinationModel.language" />
+        </label>
+    </div>
+
+
+    <button  (click)="onClick()" [disabled]="!destinationForm.form.valid" class="btn btn-success"> Create Destination </button>
+  </form>

@@ -1,0 +1,7 @@
+.ng-invalid{
+    border-color: #a94442;
+}
+
+.ng-valid.ng-touched{
+    border-color: #42A948;
+}
